@@ -3,12 +3,9 @@ import Layout from "../Layout/Layout";
 function Shop() {
   return (
     <Layout>
-        
-        <ShopSection>
-
-        </ShopSection>
+      <h1>Shop Page</h1>
     </Layout>
-  )
+  );
 }
 
 export default Shop;

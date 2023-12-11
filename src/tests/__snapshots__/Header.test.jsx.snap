@@ -1,0 +1,72 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Test header functionalities > Match snapshot 1`] = `
+<div>
+  <div
+    class="_layout_0c8bf9"
+  >
+    <header>
+      <span>
+        Logo
+      </span>
+      <span>
+        Name
+      </span>
+      <ul>
+        <li>
+          <a
+            href="/"
+          >
+            Home
+          </a>
+        </li>
+        <li>
+          <a
+            href="/shop"
+          >
+            Shop
+          </a>
+        </li>
+        <li>
+          <a
+            href="/cart"
+          >
+            Cart
+          </a>
+        </li>
+      </ul>
+    </header>
+    <div
+      class="_homeContainer_345077"
+    >
+      <div
+        class="_heroContainer_345077"
+      >
+        <h1
+          class="welcome"
+        >
+          WELCOME TO MY SHOP
+        </h1>
+      </div>
+      <h2
+        class="_previewHeading_345077"
+      >
+        Check the trending
+      </h2>
+      <div
+        class="_previewShop_345077"
+      />
+    </div>
+    <footer>
+      <span>
+        Made by 
+        <a
+          href="http://www.github.com/radtradcath"
+        >
+          RadTradCath
+        </a>
+      </span>
+    </footer>
+  </div>
+</div>
+`;
