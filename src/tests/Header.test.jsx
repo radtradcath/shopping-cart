@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { act, render, screen, waitFor } from "@testing-library/react";
 import { expect } from "vitest";
 import { cleanup } from "@testing-library/react";
 import Layout from "../components/Layout/Layout";
@@ -25,11 +25,16 @@ describe("Test header functionalities", () => {
       </Router>
     );
 
-    const shopLink = screen.getByText('Shop');
+    const shopLink = screen.getByText("Shop");
 
     await user.click(shopLink);
-
-    expect(screen.getByRole("heading").textContent).toMatch("Shop Page");
+      
+    act(() => {
+      waitFor(() => {
+        expect(screen.getByText('electronics')).toBeInTheDocument()
+      })
+    })
+    expect(screen.getByText('electronics')).toBeDefined()
   });
 
   it("Link to cart correctly", async () => {
@@ -41,7 +46,7 @@ describe("Test header functionalities", () => {
       </Router>
     );
 
-    const cartLink = screen.getByText('Cart');
+    const cartLink = screen.getByText(/Cart/);
 
     await user.click(cartLink);
 
