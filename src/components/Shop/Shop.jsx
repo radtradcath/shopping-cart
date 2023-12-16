@@ -20,9 +20,9 @@ function Shop() {
   return (
     <Layout>
       <div className={styles.shopContainer}>
-        <nav className={styles.categoriesList}>
+        <nav className={styles.navList}>
           {categories.map((category) => (
-            <Link to={`${category}`}>{category}</Link>
+            <Link to={`${category}`} id={category} key={category}>{category}</Link>
           ))}
         </nav>
         <Outlet />

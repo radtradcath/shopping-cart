@@ -1,0 +1,10 @@
+.counterContainer {
+    display: flex;
+}
+
+.counterContainer span {
+    width: 2em;
+    height: inherit;
+    display: inline-block;
+    border: 1px solid black;
+}

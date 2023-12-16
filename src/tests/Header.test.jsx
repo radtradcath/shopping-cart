@@ -28,13 +28,8 @@ describe("Test header functionalities", () => {
     const shopLink = screen.getByText("Shop");
 
     await user.click(shopLink);
-      
-    act(() => {
-      waitFor(() => {
-        expect(screen.getByText('electronics')).toBeInTheDocument()
-      })
-    })
-    expect(screen.getByText('electronics')).toBeDefined()
+
+    expect(await screen.findByText("electronics")).toBeVisible();
   });
 
   it("Link to cart correctly", async () => {

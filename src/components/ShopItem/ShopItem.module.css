@@ -1,18 +1,22 @@
 .itemContainer {
    border: 1px solid green; 
    max-width: 20em;
-   max-height: fit-content;
+   min-height: fit-content;
+
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
 }
 
 .imgContainer {
     border: 1px solid blue;
     display: flex;
     justify-content: center;
-    height: 60%;
+    height: 50%;
 }
 
 .imgContainer img {
     width: 80%;
     height: auto;
-    object-fit: cover;
+    object-fit:cover;
 }

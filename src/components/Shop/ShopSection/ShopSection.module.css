@@ -1,0 +1,3 @@
+.shopSection {
+  composes: previewShop from "../../Home/Home.module.css";
+}

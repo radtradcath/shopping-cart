@@ -1,8 +1,11 @@
 import styles from "./ShopItem.module.css";
+import { useState } from "react";
+import Counter from "../Counter/Counter";
 
-function ShopItem({ handler, item }) {
+function ShopItem({ submitHandler, item, id, counter, countHandler }) {
+  
   return (
-    <div className={styles.itemContainer}>
+    <div className={`${styles.itemContainer} itemParent`} id={id}>
       <div className={styles.imgContainer}>
         <img src={item.image} alt="" />
       </div>
@@ -11,8 +14,8 @@ function ShopItem({ handler, item }) {
         <p className={styles.itemPrice}>{item.price}</p>
       </div>
       <div className={styles.cardButtons}>
-        <button>COUNTER</button>
-        <button onClick={handler}>Add To Cart</button>
+        <Counter itemCount={counter} handler={countHandler}/>
+        <button onClick={submitHandler}>Add To Cart</button>
       </div>
     </div>
   );
