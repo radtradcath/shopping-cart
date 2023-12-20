@@ -1,9 +1,19 @@
+import { useContext } from "react";
 import styles from "./ShopItem.module.css";
-import { useState } from "react";
-import Counter from "../Counter/Counter";
+import { CartContext } from "../Router";
 
-function ShopItem({ submitHandler, item, id, counter, countHandler }) {
-  
+function Counter({ itemCount, handler }) {
+  return (
+    <div className={styles.counterContainer}>
+      <button onClick={handler}>-</button>
+      <span>{itemCount}</span>
+      <button onClick={handler}>+</button>
+    </div>
+  );
+}
+
+function ShopItem({ item, id }) {
+  const { addToCart } = useContext(CartContext);
   return (
     <div className={`${styles.itemContainer} itemParent`} id={id}>
       <div className={styles.imgContainer}>
@@ -14,8 +24,7 @@ function ShopItem({ submitHandler, item, id, counter, countHandler }) {
         <p className={styles.itemPrice}>{item.price}</p>
       </div>
       <div className={styles.cardButtons}>
-        <Counter itemCount={counter} handler={countHandler}/>
-        <button onClick={submitHandler}>Add To Cart</button>
+        <button onClick={addToCart}>Add To Cart</button>
       </div>
     </div>
   );

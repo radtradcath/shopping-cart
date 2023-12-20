@@ -1,6 +1,7 @@
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import styles from "./Layout.module.css";
+import { createContext, useState } from "react";
 
 function Layout({ children }) {
   return (

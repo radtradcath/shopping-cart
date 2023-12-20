@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
+import { useContext } from "react";
 import styles from "./Header.module.css";
+import { CartContext } from "../Router";
 
 function Header() {
+  const { cart } = useContext(CartContext);
   return (
     <header>
       <span>Logo</span>
@@ -15,6 +18,7 @@ function Header() {
         </li>
         <li>
           <Link to="/cart">Cart</Link>
+          <span>{cart.length}</span>
         </li>
       </ul>
     </header>
