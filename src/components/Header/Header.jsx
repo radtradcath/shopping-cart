@@ -18,7 +18,7 @@ function Header() {
         </li>
         <li>
           <Link to="/cart">Cart</Link>
-          <span>{cart.length}</span>
+          <span>{cart.reduce((prev, curr) => prev + curr.count, 0)}</span>
         </li>
       </ul>
     </header>
