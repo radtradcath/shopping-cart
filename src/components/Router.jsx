@@ -12,25 +12,27 @@ export const CartContext = createContext({
   cart: [],
   setCart: () => {},
   addToCart: () => {},
+  products: [],
+  setProducts: () => {},
 });
 
 const Router = function Router() {
   const [cart, setCart] = useState([]);
-  const [items, setItems] = useState([]);
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
     const getItems = (async () => {
       const fetchItems = await fetch("https://fakestoreapi.com/products");
       const parsedItems = await fetchItems.json();
 
-      setItems(parsedItems);
+      setProducts(parsedItems);
     })();
   }, []);
 
   const addToCart = (e) => {
     const itemId = +e.target.closest(".itemParent").id;
     const foundInCart = cart.some((el) => el.id === itemId);
-    const shopItem = items.find((item) => item.id === itemId);
+    const shopItem = products.find((item) => item.id === itemId);
 
     setCart(
       foundInCart
@@ -40,14 +42,7 @@ const Router = function Router() {
         : [...cart, { ...shopItem, count: 1 }]
     );
 
-    // setCart(
-    //   foundInCart
-    //     ? cart.map((el) =>
-    //         el.id === itemId ? { id: itemId, count: el.count + 1 } : el
-    //       )
-    //     : [...cart, { id: itemId, count: 1 }]
-    // );
-    console.log(cart);
+    console.log(cart)
   };
 
   const router = createBrowserRouter([
@@ -72,7 +67,9 @@ const Router = function Router() {
   ]);
 
   return (
-    <CartContext.Provider value={{ cart, setCart, addToCart }}>
+    <CartContext.Provider
+      value={{ cart, setCart, addToCart, products, setProducts }}
+    >
       <RouterProvider router={router} />
     </CartContext.Provider>
   );

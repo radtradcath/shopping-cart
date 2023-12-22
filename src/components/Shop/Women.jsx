@@ -1,22 +1,13 @@
-import { useState, useContext, useEffect } from "react";
-
+import { useContext } from "react";
+import { CartContext } from "../Router";
 import ShopItem from "../ShopItem/ShopItem";
 import ShopSection from "./ShopSection/ShopSection";
 import styles from "./ShopSection/ShopSection.module.css";
 
 function Womens() {
-  const [items, setItems] = useState([]);
+  const { products, setProducts } = useContext(CartContext);
 
-  useEffect(() => {
-    const getItems = (async () => {
-      const fetchItems = await fetch("https://fakestoreapi.com/products");
-      const parsedItems = await fetchItems.json();
-
-      setItems(parsedItems);
-    })();
-  }, []);
-
-  const womens = items.filter((item) => item.category === "women's clothing");
+  const womens = products.filter((item) => item.category === "women's clothing");
 
   return (
     <ShopSection section="Women's Clothing" className={styles.womensOutlet}>

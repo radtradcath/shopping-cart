@@ -1,22 +1,13 @@
-import { useState, useContext, useEffect } from "react";
-
+import { useContext } from "react";
+import { CartContext } from "../Router";
 import ShopItem from "../ShopItem/ShopItem";
 import ShopSection from "./ShopSection/ShopSection";
 import styles from "./ShopSection/ShopSection.module.css";
 
 function Jewelery() {
-  const [items, setItems] = useState([]);
+  const { products, setProducts } = useContext(CartContext);
 
-  useEffect(() => {
-    const getItems = (async () => {
-      const fetchItems = await fetch("https://fakestoreapi.com/products");
-      const parsedItems = await fetchItems.json();
-
-      setItems(parsedItems);
-    })();
-  }, []);
-
-  const jewelery = items.filter((item) => item.category === "jewelery");
+  const jewelery = products.filter((item) => item.category === "jewelery");
 
   return (
     <ShopSection section="Jewelery" className={styles.jeweleryOutlet}>
