@@ -1,25 +1,38 @@
 import Layout from "../Layout/Layout";
 import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../Router";
+import styles from "./Cart.module.css";
 
-function CartItem({item}) {
+function CartItem({ product }) {
   return (
-    <div>
-      <div>{item.image}</div>
-      <span>{item.title}</span>
-      <span>{item.price} un.</span>
-      <span></span>
-    </div>
-  )
+    <li id={product.id} key={product.id}>
+      <div className={styles.imgContainer}>
+        <img src={product.image} alt="" />
+      </div>
+      <span>{product.title}</span>
+      <span>$ {product.price}</span>
+      <span>{product.count} un.</span>
+    </li>
+  );
 }
 
 function Cart() {
-  const { cart, setCart, addToCart } = useContext(CartContext);
-  const [items, setItems] = useState([]);
+  const { cart } = useContext(CartContext);
 
   return (
     <Layout>
-      <h1>Your cart</h1>
+      <div className={styles.cartContainer}>
+        <h1>Your cart</h1>
+        <ul>
+          {cart.map((product) => (
+            <CartItem key={product.id} product={product} />
+          ))}
+        </ul>
+        <span>
+          Total: $
+          {cart.reduce((prev, next) => prev + next.count * next.price, 0)}
+        </span>
+      </div>
     </Layout>
   );
 }
