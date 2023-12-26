@@ -10,8 +10,8 @@ function CartItem({ product }) {
         <img src={product.image} alt="" />
       </div>
       <span>{product.title}</span>
-      <span>$ {product.price}</span>
       <span>{product.count} un.</span>
+      <span>$ {product.price}</span>
     </li>
   );
 }
@@ -30,7 +30,9 @@ function Cart() {
         </ul>
         <span>
           Total: $
-          {cart.reduce((prev, next) => prev + next.count * next.price, 0)}
+          {cart
+            .reduce((prev, next) => prev + next.count * next.price, 0)
+            .toFixed(2)}
         </span>
       </div>
     </Layout>

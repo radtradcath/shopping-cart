@@ -1,6 +1,7 @@
 .cartContainer {
     display: flex;
     flex-direction: column;
+    padding: 0 2em;
 }
 
 .cartContainer li {
@@ -9,16 +10,31 @@
     justify-content: space-between;
 
     flex: 1;
-    height: 10%;
+    flex-wrap: wrap;
+    height: 30em;
+}
+
+.cartContainer li span:first-of-type {
+    width: 10em;
+}
+
+.cartContainer ul {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
 }
 
 .cartContainer .imgContainer {
-    height: 100%;
+    width: 6em;
 }
 
 .cartContainer img {
-    height: 100%;
+    width: 100%;
     object-fit:fill;
+}
+
+.cartContainer :last-child {
+    text-align: end;
 }
 
 
