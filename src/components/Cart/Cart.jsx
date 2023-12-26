@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../Router";
 import styles from "./Cart.module.css";
 
-function CartItem({ product }) {
+function CartItem({ product, handler }) {
   return (
     <li id={product.id} key={product.id}>
       <div className={styles.imgContainer}>
@@ -12,12 +12,20 @@ function CartItem({ product }) {
       <span>{product.title}</span>
       <span>{product.count} un.</span>
       <span>$ {product.price}</span>
+      <button onClick={handler}>X</button>
     </li>
   );
 }
 
 function Cart() {
-  const { cart } = useContext(CartContext);
+  const { cart, setCart } = useContext(CartContext);
+
+  function handleDelete(e) {
+    const itemId = e.target.parentNode.id;
+
+    setCart(cart.filter((el) => el.id != itemId));
+    
+  }
 
   return (
     <Layout>
@@ -25,7 +33,11 @@ function Cart() {
         <h1>Your cart</h1>
         <ul>
           {cart.map((product) => (
-            <CartItem key={product.id} product={product} />
+            <CartItem
+              key={product.id}
+              product={product}
+              handler={handleDelete}
+            />
           ))}
         </ul>
         <span>
