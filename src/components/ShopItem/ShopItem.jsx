@@ -1,16 +1,7 @@
 import { useContext } from "react";
+import PropTypes from 'prop-types'
 import styles from "./ShopItem.module.css";
 import { CartContext } from "../Router";
-
-function Counter({ itemCount, handler }) {
-  return (
-    <div className={styles.counterContainer}>
-      <button onClick={handler}>-</button>
-      <span>{itemCount}</span>
-      <button onClick={handler}>+</button>
-    </div>
-  );
-}
 
 function ShopItem({ item, id }) {
   const { addToCart } = useContext(CartContext);
@@ -28,6 +19,14 @@ function ShopItem({ item, id }) {
       </div>
     </div>
   );
+}
+
+ShopItem.propTypes = {
+  item: PropTypes.object,
+  id: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ])
 }
 
 export default ShopItem;
