@@ -7,6 +7,7 @@ import Jewelery from "./Shop/Jewelery";
 import Electronics from "./Shop/Electronics";
 import Mens from "./Shop/Mens";
 import Womens from "./Shop/Women";
+import ErrorPage from "./ErrorPage/ErrorPage";
 
 export const CartContext = createContext({
   cart: [],
@@ -49,6 +50,7 @@ const Router = function Router() {
     {
       path: "/",
       element: <Home />,
+      errorElement: <ErrorPage />,
     },
     {
       path: "shop",
